@@ -18,9 +18,9 @@ pip install matplotlib
 
 More info about speedtest-cli can be found [here](https://github.com/sivel/speedtest-cli), and more info about matplotlib can be found [here](https://matplotlib.org/stable/index.html)
 
-## Step 2: Test the speedtest-cli module
+## Step 2: Test the speedtest-cli library
 
-Open a python file in your favorite editor and let's test out the speedtest module
+Open a python file in your favorite editor and let's test out the speedtest library
 
 ```python
 from speedtest import Speedtest
