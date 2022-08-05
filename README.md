@@ -138,6 +138,6 @@ while True:
     time.sleep(60)
 ```
 
-Before executing, let's look at exactly what this code is doing. `while True` is creating a while loop based on a condition that is *always* true. This will cause the loop to run indefinitely, which can be very dangerous. The only way to stop the script outside of force closing python is to use `Ctrl+C` to force stop. Always be careful with while loops that do not have a way to stop.
+Before executing, let's look at exactly what this code is doing. `while True` is creating a while loop based on a condition that is *always* true. This will cause the loop to run indefinitely, which can be very dangerous. The only way to stop the script outside of force closing python is to use `Ctrl+C` to force stop. This is a necessary tool when running a program that you want to run until you force it to stop. Just be sure you are aware when you use it so you can kill the program if needed.
 
 Beyond that, the `time.sleep(60)` is the most important part of the code. This line tells python to stop doing things for 60 seconds before continuing to execute. So as setup, we are going to be testing our download and upload speeds every 60 seconds. This can be adusted to whatever time interval we choose. Keep in mind, tests are not instant so the tests don't begin every 60 seconds, but 60 seconds after one ends the next will begin.
