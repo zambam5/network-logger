@@ -138,6 +138,26 @@ while True:
     time.sleep(60)
 ```
 
-Before executing, let's look at exactly what this code is doing. `while True` is creating a while loop based on a condition that is *always* true. This will cause the loop to run indefinitely, which can be very dangerous. The only way to stop the script outside of force closing python is to use `Ctrl+C` to force stop. This is a necessary tool when running a program that you want to run until you force it to stop. Just be sure you are aware when you use it so you can kill the program if needed.
+Before executing, let's look at exactly what this code is doing. `while True` is creating a while loop based on a condition that is *always* true. This will cause the loop to run indefinitely, which can be very dangerous. The only way to stop the script outside of force closing python is to use `Ctrl+C` to force stop. This is a necessary tool when running a program that you want to run until you force it to stop. Just be sure you are aware when you use it so you can kill the program if needed. If you want to only run the loop for some number of minutes, you can do something like this:
+
+```python
+from speedtest import Speedtest
+import time
+
+st = Speedtest()
+
+start_time = time.time()
+while True:
+    st.get_best_server()
+    t = time.time()
+    print(f"Download speed   {st.download()/8000000:.2f}MB/s")
+    print(f"Upload speed   {st.upload()/8000000:.2f}MB/s")
+    print(f"The test took {time.time()-t} seconds")
+    if time.time() - start_time > 600:
+        # if the loop has run for 10 minutes
+        break
+    else:
+        time.sleep(60)
+```
 
 Beyond that, the `time.sleep(60)` is the most important part of the code. This line tells python to stop doing things for 60 seconds before continuing to execute. So as setup, we are going to be testing our download and upload speeds every 60 seconds. This can be adusted to whatever time interval we choose. Keep in mind, tests are not instant so the tests don't begin every 60 seconds, but 60 seconds after one ends the next will begin.
