@@ -161,3 +161,48 @@ while True:
 ```
 
 Beyond that, the `time.sleep(60)` is the most important part of the code. This line tells python to stop doing things for 60 seconds before continuing to execute. So as setup, we are going to be testing our download and upload speeds every 60 seconds. This can be adusted to whatever time interval we choose. Keep in mind, tests are not instant so the tests don't begin every 60 seconds, but 60 seconds after one ends the next will begin.
+
+## Part 4: Put the two together
+
+Now that we know a bit how to work with CSV files and how to test our internet speed, let's put the two together. We are going to write a function that finds the download and upload speeds and writes them to a CSV file. Later on we'll add the date and time (24hour format), but for now we will just use the `time` module.
+
+```python
+def network_logger(st):
+    # st should be a Speedtest object
+    st.get_best_server()
+    t = time.time()
+    down = f"{st.download()/8000000:.2f}"  # convert to MB/s, round to 2 decimals
+    up = f"{st.upload()/8000000:.2f}"  # convert to MB/s, round to 2 decimals
+    with open("network-speeds.csv", "a+", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        newrow = [t, down, up]
+        writer.writerow(newrow)
+```
+
+So now we can call `network_logger()` to log the download and upload speeds. This function will see some changes before we are done, but the key idea is there. Now all we need is a loop to tie the whole thing together.
+
+```python
+import csv, time
+from speedtest import Speedtest
+
+
+def network_logger(st):
+    # st should be a Speedtest object
+    st.get_best_server()
+    t = time.time()
+    down = f"{st.download()/8000000:.2f}"  # convert to MB/s, round to 2 decimals
+    up = f"{st.upload()/8000000:.2f}"  # convert to MB/s, round to 2 decimals
+    with open("network-speeds.csv", "a+", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        newrow = [t, down, up]
+        writer.writerow(newrow)
+
+
+st = Speedtest()
+
+while True:
+    network_logger(st)
+    time.sleep(600)
+```
+
+If you let this run for a bit, you should see a file called "network-speeds.csv" in the same directory as the script
