@@ -34,7 +34,7 @@ with open("nile.csv", "r") as csvfile:
 
 There are several things going on here. First the `open` function will open whatever file we put in. `newline=""` is recommended to use whenever opening CSVs. The `"r"` specifies how that file is opened. What that does is open the file and specify that we can only *read* the file. We cannot make any changes to the file, only read it. All of the available permissions and what they do can be found [here](https://tutorial.eyehunts.com/python/python-file-modes-open-write-append-r-r-w-w-x-etc/). One very important thing to note is that `w` will overwrite the existing file.
 
-The reader object allows us to iterate over the lines of a csv file. Each line is turned into a list. It is also possible to use `DictReader` instead to turn each line into a dictionary. To illustrate this, let's print each row.
+The reader object allows us to iterate over the lines of a csv file. Each line is turned into a list. It is also possible to use `DictReader` instead to turn each line into a dictionary. The advantages of this are if you are working with a dataset with headers, you can more easily find the specific data you are looking for. To illustrate the `reader` object, let's print each row.
 
 ```python
 import csv
