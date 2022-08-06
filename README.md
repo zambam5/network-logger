@@ -206,3 +206,14 @@ while True:
 ```
 
 If you let this run for a bit, you should see a file called "network-speeds.csv" in the same directory as the script
+
+## TODO
+
+- File structure based on day/week/month
+- Explore matplotlib
+- Compile daily reports using matplotlib
+- Lay out how to send emails
+- Email daily reports
+- Email alerts?
+- Raspberry Pi display?
+- Make it slightly interactive?
