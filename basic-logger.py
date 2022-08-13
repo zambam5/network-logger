@@ -2,6 +2,10 @@ import csv, time
 from speedtest import Speedtest
 
 
+# write a function to find the download and upload speed
+# it should also update the csvfile
+
+
 def network_logger(st):
     # st should be a Speedtest object
     st.get_best_server()
@@ -15,6 +19,9 @@ def network_logger(st):
 
 
 st = Speedtest()
+
+# write a loop that will indefinitely run the above function
+# determine how often it should run
 
 while True:
     network_logger(st)
