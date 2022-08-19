@@ -25,4 +25,4 @@ st = Speedtest()
 
 while True:
     network_logger(st)
-    time.sleep(600)
+    time.sleep(60)
